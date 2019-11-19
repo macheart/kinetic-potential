@@ -1,0 +1,43 @@
+---
+title: "kinetic-potential"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r Load your workspace}
+library(ISLR)
+attach(Smarket)
+```
+
+```{r Look at your data set}
+names(Smarket)
+dim(Smarket)
+summary(Smarket) # overview
+cor(Smarket[,-9]) # Make a pairwise correlation matrix of all predictors in the data
+```
+
+```{r Logistic Regression Model}
+### used to predict `Direction` (qual.) using the quant. predictors
+glm.fit=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial) # `glm` is generalize linear models
+# family=binomial tells the function to apply logistic regression
+
+summary(glm.fit)
+```
+
+```{r Apply the predict() function}
+### apply predict() function to get prob. of the response (X)
+glm.probs=predict(glm.fit,type="response")# General:default P(Y=1|X)
+glm.probs[1:10]
+contrasts(Direction)
+
+glm.pred=rep("Down",1250) # create a repeat vector "Down" to be used later
+glm.pred[glm.probs > .5] = "Up" # Classify either prob as up or down based on threshold
+```
+
+```{r Confusion Matrix}
+table(glm.pred, Direction) # determine how many were correctly or incorrectly classified
+```
+
