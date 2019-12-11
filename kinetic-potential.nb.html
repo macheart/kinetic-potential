@@ -1753,20 +1753,47 @@ summary {
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShJU0xSKVxuYXR0YWNoKFNtYXJrZXQpXG5gYGAifQ== -->
-<pre class="r"><code>library(ISLR)
-attach(Smarket)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShJU0xSKVxuYGBgIn0= -->
+<pre class="r"><code>library(ISLR)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoU21hcmtldClcbmRpbShTbWFya2V0KVxuc3VtbWFyeShTbWFya2V0KSAjIG92ZXJ2aWV3XG5jb3IoU21hcmtldFssLTldKSAjIE1ha2UgYSBwYWlyd2lzZSBjb3JyZWxhdGlvbiBtYXRyaXggb2YgYWxsIHByZWRpY3RvcnMgaW4gdGhlIGRhdGFcbmBgYCJ9 -->
-<pre class="r"><code>names(Smarket)
-dim(Smarket)
-summary(Smarket) # overview
-cor(Smarket[,-9]) # Make a pairwise correlation matrix of all predictors in the data</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoU21hcmtldClcbmBgYCJ9 -->
+<pre class="r"><code>names(Smarket)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiWWVhclwiICAgICAgXCJMYWcxXCIgICAgICBcIkxhZzJcIiAgICAgIFwiTGFnM1wiICAgICAgXCJMYWc0XCIgICAgICBcIlZvbHVtZVwiICAgXG5bOF0gXCJUb2RheVwiICAgICBcIkRpcmVjdGlvblwiXG4ifQ== -->
+<pre><code>[1] &quot;Year&quot;      &quot;Lag1&quot;      &quot;Lag2&quot;      &quot;Lag3&quot;      &quot;Lag4&quot;      &quot;Volume&quot;   
+[8] &quot;Today&quot;     &quot;Direction&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGltKFNtYXJrZXQpXG5gYGAifQ== -->
+<pre class="r"><code>dim(Smarket)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEyNTAgICAgOVxuICAgICAgWWVhciAgICAgICAgICAgTGFnMSAgICAgICAgICAgTWluLiAgIDoyMDAxICAgTWluLiAgIDotNC45MjIwMDAgICBNaW4uICAgOi00LjkyMjAwMCAgIE1pbi4gICA6LTQuOTIyMDAwICAgTWluLiAgIDotNC45MjIwMDAgIFxuIDFzdCBRdS46MjAwMiAgIDFzdCBRdS46LTAuNjM5NTAwICAgMXN0IFF1LjotMC42Mzk1MDAgICAxc3QgUXUuOi0wLjY0MDAwMCAgIDFzdCBRdS46LTAuNjQwMDAwICBcbiBNZWRpYW4gOjIwMDMgICBNZWRpYW4gOiAwLjAzOTAwMCAgIE1lZGlhbiA6IDAuMDM5MDAwICAgTWVkaWFuIDogMC4wMzg1MDAgICBNZWRpYW4gOiAwLjAzODUwMCAgXG4gTWVhbiAgIDoyMDAzICAgTWVhbiAgIDogMC4wMDM4MzQgICBNZWFuICAgOiAwLjAwMzkxOSAgIE1lYW4gICA6IDAuMDAxNzE2ICAgTWVhbiAgIDogMC4wMDE2MzYgIFxuIDNyZCBRdS46MjAwNCAgIDNyZCBRdS46IDAuNTk2NzUwICAgM3JkIFF1LjogMC41OTY3NTAgICAzcmQgUXUuOiAwLjU5Njc1MCAgIDNyZCBRdS46IDAuNTk2NzUwICBcbiBNYXguICAgOjIwMDUgICBNYXguICAgOiA1LjczMzAwMCAgIE1heC4gICA6IDUuNzMzMDAwICAgTWF4LiAgIDogNS43MzMwMDAgICBNYXguICAgOiA1LjczMzAwMCAgXG4gICAgICBMYWc1ICAgICAgICAgICAgICBWb2x1bWUgICAgICAgICAgIFRvZGF5ICAgICAgICAgICBEaXJlY3Rpb24gXG4gTWluLiAgIDotNC45MjIwMCAgIE1pbi4gICA6MC4zNTYxICAgTWluLiAgIDotNC45MjIwMDAgICBEb3duOjYwMiAgXG4gMXN0IFF1LjotMC42NDAwMCAgIDFzdCBRdS46MS4yNTc0ICAgMXN0IFF1LjotMC42Mzk1MDAgICBVcCAgOjY0OCAgXG4gTWVkaWFuIDogMC4wMzg1MCAgIE1lZGlhbiA6MS40MjI5ICAgTWVkaWFuIDogMC4wMzg1MDAgICAgICAgICAgICAgXG4gTWVhbiAgIDogMC4wMDU2MSAgIE1lYW4gICA6MS40NzgzICAgTWVhbiAgIDogMC4wMDMxMzggICAgICAgICAgICAgXG4gM3JkIFF1LjogMC41OTcwMCAgIDNyZCBRdS46MS42NDE3ICAgM3JkIFF1LjogMC41OTY3NTAgICAgICAgICAgICAgXG4gTWF4LiAgIDogNS43MzMwMCAgIE1heC4gICA6My4xNTI1ICAgTWF4LiAgIDogNS43MzMwMDAgICAgICAgICAgICAgXG4ifQ== -->
+<pre><code>[1] 1250    9
+      Year           Lag1           Min.   :2001   Min.   :-4.922000   Min.   :-4.922000   Min.   :-4.922000   Min.   :-4.922000  
+ 1st Qu.:2002   1st Qu.:-0.639500   1st Qu.:-0.639500   1st Qu.:-0.640000   1st Qu.:-0.640000  
+ Median :2003   Median : 0.039000   Median : 0.039000   Median : 0.038500   Median : 0.038500  
+ Mean   :2003   Mean   : 0.003834   Mean   : 0.003919   Mean   : 0.001716   Mean   : 0.001636  
+ 3rd Qu.:2004   3rd Qu.: 0.596750   3rd Qu.: 0.596750   3rd Qu.: 0.596750   3rd Qu.: 0.596750  
+ Max.   :2005   Max.   : 5.733000   Max.   : 5.733000   Max.   : 5.733000   Max.   : 5.733000  
+      Lag5              Volume           Today           Direction 
+ Min.   :-4.92200   Min.   :0.3561   Min.   :-4.922000   Down:602  
+ 1st Qu.:-0.64000   1st Qu.:1.2574   1st Qu.:-0.639500   Up  :648  
+ Median : 0.03850   Median :1.4229   Median : 0.038500             
+ Mean   : 0.00561   Mean   :1.4783   Mean   : 0.003138             
+ 3rd Qu.: 0.59700   3rd Qu.:1.6417   3rd Qu.: 0.596750             
+ Max.   : 5.73300   Max.   :3.1525   Max.   : 5.733000             </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29yKFNtYXJrZXRbLC05XSkgIyBNYWtlIGEgcGFpcndpc2UgY29ycmVsYXRpb24gbWF0cml4IG9mIGFsbCBwcmVkaWN0b3JzIGluIHRoZSBkYXRhXG5gYGAifQ== -->
+<pre class="r"><code>cor(Smarket[,-9]) # Make a pairwise correlation matrix of all predictors in the data</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIFllYXIgICAgICAgICBMYWcxICAgICAgICAgTGFnMiAgICAgICAgIExhZzMgICAgICAgICBMYWc0ICAgICAgICAgTGFnNSAgICAgIFZvbHVtZVxuWWVhciAgIDEuMDAwMDAwMDAgIDAuMDI5Njk5NjQ5ICAwLjAzMDU5NjQyMiAgMC4wMzMxOTQ1ODEgIDAuMDM1Njg4NzE4ICAwLjAyOTc4Nzk5NSAgMC41MzkwMDY0N1xuTGFnMSAgIDAuMDI5Njk5NjUgIDEuMDAwMDAwMDAwIC0wLjAyNjI5NDMyOCAtMC4wMTA4MDM0MDJcbiJ9 -->
+<pre><code>             Year         Lag1         Lag2         Lag3         Lag4         Lag5      Volume
+Year   1.00000000  0.029699649  0.030596422  0.033194581  0.035688718  0.029787995  0.53900647
+Lag1   0.02969965  1.000000000 -0.026294328 -0.010803402</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1778,26 +1805,65 @@ glm.fit=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomi
 
 summary(glm.fit)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIGFwcGx5IHByZWRpY3QoKSBmdW5jdGlvbiB0byBnZXQgcHJvYi4gb2YgdGhlIHJlc3BvbnNlIChYKVxuZ2xtLnByb2JzPXByZWRpY3QoZ2xtLmZpdCx0eXBlPVwicmVzcG9uc2VcIikjIEdlbmVyYWw6ZGVmYXVsdCBQKFk9MXxYKVxuZ2xtLnByb2JzWzE6MTBdXG5jb250cmFzdHMoRGlyZWN0aW9uKVxuXG5nbG0ucHJlZD1yZXAoXCJEb3duXCIsMTI1MCkgIyBjcmVhdGUgYSByZXBlYXQgdmVjdG9yIFwiRG93blwiIHRvIGJlIHVzZWQgbGF0ZXJcbmdsbS5wcmVkW2dsbS5wcm9icyA+IC41XSA9IFwiVXBcIiAjIENsYXNzaWZ5IGVpdGhlciBwcm9iIGFzIHVwIG9yIGRvd24gYmFzZWQgb24gdGhyZXNob2xkXG5gYGAifQ== -->
-<pre class="r"><code>### apply predict() function to get prob. of the response (X)
-glm.probs=predict(glm.fit,type=&quot;response&quot;)# General:default P(Y=1|X)
-glm.probs[1:10]
-contrasts(Direction)
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBEaXJlY3Rpb24gfiBMYWcxICsgTGFnMiArIExhZzMgKyBMYWc0ICsgTGFnNSArIFxuICAgIFZvbHVtZSwgZmFtaWx5ID0gYmlub21pYWwsIGRhdGEgPSBTbWFya2V0KVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgTWluICAgICAgMVEgIE1lZGlhbiAgICAgIDNRICAgICBNYXggIFxuLTEuNDQ2ICAtMS4yMDMgICAxLjA2NSAgIDEuMTQ1ICAgMS4zMjYgIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpXG4oSW50ZXJjZXB0KSAtMC4xMjYwMDAgICAwLjI0MDczNiAgLTAuNTIzICAgIDAuNjAxXG5MYWcxICAgICAgICAtMC4wNzMwNzQgICAwLjA1MDE2NyAgLTEuNDU3ICAgIDAuMTQ1XG5MYWcyICAgICAgICAtMC4wNDIzMDEgICAwLjA1MDA4NiAgLTAuODQ1ICAgIDAuMzk4XG5MYWczICAgICAgICAgMC4wMTEwODUgICAwLjA0OTkzOSAgIDAuMjIyICAgIDAuODI0XG5MYWc0ICAgICAgICAgMC4wMDkzNTkgICAwLjA0OTk3NCAgIDAuMTg3ICAgIDAuODUxXG5MYWc1ICAgICAgICAgMC4wMTAzMTMgICAwLjA0OTUxMSAgIDAuMjA4ICAgIDAuODM1XG5Wb2x1bWUgICAgICAgMC4xMzU0NDEgICAwLjE1ODM2MCAgIDAuODU1ICAgIDAuMzkyIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTczMS4yICBvbiAxMjQ5ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxNzI3LjYgIG9uIDEyNDMgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxNzQxLjZcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDNcbiJ9 -->
+<pre><code>
+Call:
+glm(formula = Direction ~ Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + 
+    Volume, family = binomial, data = Smarket)
 
-glm.pred=rep(&quot;Down&quot;,1250) # create a repeat vector &quot;Down&quot; to be used later
-glm.pred[glm.probs &gt; .5] = &quot;Up&quot; # Classify either prob as up or down based on threshold</code></pre>
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.446  -1.203   1.065   1.145   1.326  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept) -0.126000   0.240736  -0.523    0.601
+Lag1        -0.073074   0.050167  -1.457    0.145
+Lag2        -0.042301   0.050086  -0.845    0.398
+Lag3         0.011085   0.049939   0.222    0.824
+Lag4         0.009359   0.049974   0.187    0.851
+Lag5         0.010313   0.049511   0.208    0.835
+Volume       0.135441   0.158360   0.855    0.392 family taken to be 1)
+
+    Null deviance: 1731.2  on 1249  degrees of freedom
+Residual deviance: 1727.6  on 1243  degrees of freedom
+AIC: 1741.6
+
+Number of Fisher Scoring iterations: 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBcHBseSB0aGUgcHJlZGljdCgpIGZ1bmN0aW9uXG4jIyMgYXBwbHkgcHJlZGljdCgpIGZ1bmN0aW9uIHRvIGdldCBwcm9iLiBvZiB0aGUgcmVzcG9uc2UgKFgpXG5nbG0ucHJvYnM9cHJlZGljdChnbG0uZml0LHR5cGU9XCJyZXNwb25zZVwiKSMgR2VuZXJhbDpkZWZhdWx0IFAoWT0xfFgpXG5nbG0ucHJvYnNbMToxMF1cbmBgYCJ9 -->
+<pre class="r"><code># Apply the predict() function
+### apply predict() function to get prob. of the response (X)
+glm.probs=predict(glm.fit,type=&quot;response&quot;)# General:default P(Y=1|X)
+glm.probs[1:10]</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoZ2xtLnByZWQsIERpcmVjdGlvbikgIyBkZXRlcm1pbmUgaG93IG1hbnkgd2VyZSBjb3JyZWN0bHkgb3IgaW5jb3JyZWN0bHkgY2xhc3NpZmllZFxuYGBgIn0= -->
-<pre class="r"><code>table(glm.pred, Direction) # determine how many were correctly or incorrectly classified</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAxICAgICAgICAgMiAgICAgICAgIDMgICAgICAgICA0ICAgICAgICAgNSAgICAgICAgIDYgICAgICAgICA3ICAgICAgICAgOCAgICAgICAgIDkgXG4wLjUwNzA4NDEgMC40ODE0Njc5IDAuNDgxMTM4OCAwLjUxNTIyMjQgMC41MDY5NTY1IDAuNDkyNjUwOSAwLjUwOTIyOTIgMC41MTc2MTM1IFxuICAgICAgIDEwIFxuMC40ODg4Mzc4IFxuIn0= -->
+<pre><code>        1         2         3         4         5         6         7         8         9 
+0.5070841 0.4814679 0.4811388 0.5152224 0.5069565 0.4926509 0.5092292 0.5176135 
+       10 
+0.4888378 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29udHJhc3RzKERpcmVjdGlvbilcbmBgYCJ9 -->
+<pre class="r"><code>contrasts(Direction)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBVcFxuRG93biAgMFxuVXAgICAgMVxuIn0= -->
+<pre><code>     Up
+Down  0
+Up    1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xtLnByZWQ9cmVwKFwiRG93blwiLDEyNTApICMgY3JlYXRlIGEgcmVwZWF0IHZlY3RvciBcIkRvd25cIiB0byBiZSB1c2VkIGxhdGVyXG5nbG0ucHJlZFtnbG0ucHJvYnMgPiAuNV0gPSBcIlVwXCIgIyBDbGFzc2lmeSBlaXRoZXIgcHJvYiBhcyB1cCBvciBkb3duIGJhc2VkIG9uIHRocmVzaG9sZFxuXG4jIHtyIENvbmZ1c2lvbiBNYXRyaXh9XG50YWJsZShnbG0ucHJlZCwgRGlyZWN0aW9uKSAjIGRldGVybWluZSBob3cgbWFueSB3ZXJlIGNvcnJlY3RseSBvciBpbmNvcnJlY3RseSBjbGFzc2lmaWVkXG5gYGAifQ== -->
+<pre class="r"><code>glm.pred=rep(&quot;Down&quot;,1250) # create a repeat vector &quot;Down&quot; to be used later
+glm.pred[glm.probs &gt; .5] = &quot;Up&quot; # Classify either prob as up or down based on threshold
+
+# {r Confusion Matrix}
+table(glm.pred, Direction) # determine how many were correctly or incorrectly classified</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICBEaXJlY3Rpb25cbmdsbS5wcmVkIERvd24gIFVwXG4gICAgRG93biAgMTQ1IDE0MVxuICAgIFVwICAgIDQ1NyA1MDdcbiJ9 -->
+<pre><code>        Direction
+glm.pred Down  Up
+    Down  145 141
+    Up    457 507</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1819,8 +1885,33 @@ names(lda.pred) # `class` indicates movement of the market
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihxZGEuY2xhc3M9PURpcmVjdGlvbi4yMDA1KVxuXG5gYGAifQ== -->
+<pre class="r"><code>mean(qda.class==Direction.2005)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTk5MjA2M1xuIn0= -->
+<pre><code>[1] 0.5992063</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoa25uLnByZWQsRGlyZWN0aW9uLjIwMDUpXG5cbmBgYCJ9 -->
+<pre class="r"><code>table(knn.pred,Direction.2005)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICBEaXJlY3Rpb24uMjAwNVxua25uLnByZWQgRG93biBVcFxuICAgIERvd24gNThcbiAgICBVcCAgICAgNjggODNcbiJ9 -->
+<pre><code>        Direction.2005
+knn.pred Down Up
+    Down 58
+    Up     68 83</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogImtpbmV0aWMtcG90ZW50aWFsIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gDQoNCmBgYHtyIExvYWQgeW91ciB3b3Jrc3BhY2V9DQpsaWJyYXJ5KElTTFIpDQphdHRhY2goU21hcmtldCkNCmBgYA0KDQpgYGB7ciBMb29rIGF0IHlvdXIgZGF0YSBzZXR9DQpuYW1lcyhTbWFya2V0KQ0KZGltKFNtYXJrZXQpDQpzdW1tYXJ5KFNtYXJrZXQpICMgb3ZlcnZpZXcNCmNvcihTbWFya2V0WywtOV0pICMgTWFrZSBhIHBhaXJ3aXNlIGNvcnJlbGF0aW9uIG1hdHJpeCBvZiBhbGwgcHJlZGljdG9ycyBpbiB0aGUgZGF0YQ0KYGBgDQoNCmBgYHtyIExvZ2lzdGljIFJlZ3Jlc3Npb24gTW9kZWx9DQojIyMgdXNlZCB0byBwcmVkaWN0IGBEaXJlY3Rpb25gIChxdWFsLikgdXNpbmcgdGhlIHF1YW50LiBwcmVkaWN0b3JzDQpnbG0uZml0PWdsbShEaXJlY3Rpb25+TGFnMStMYWcyK0xhZzMrTGFnNCtMYWc1K1ZvbHVtZSxkYXRhPVNtYXJrZXQsZmFtaWx5PWJpbm9taWFsKSAjIGBnbG1gIGlzIGdlbmVyYWxpemUgbGluZWFyIG1vZGVscw0KIyBmYW1pbHk9Ymlub21pYWwgdGVsbHMgdGhlIGZ1bmN0aW9uIHRvIGFwcGx5IGxvZ2lzdGljIHJlZ3Jlc3Npb24NCg0Kc3VtbWFyeShnbG0uZml0KQ0KYGBgDQoNCmBgYHtyIEFwcGx5IHRoZSBwcmVkaWN0KCkgZnVuY3Rpb259DQojIyMgYXBwbHkgcHJlZGljdCgpIGZ1bmN0aW9uIHRvIGdldCBwcm9iLiBvZiB0aGUgcmVzcG9uc2UgKFgpDQpnbG0ucHJvYnM9cHJlZGljdChnbG0uZml0LHR5cGU9InJlc3BvbnNlIikjIEdlbmVyYWw6ZGVmYXVsdCBQKFk9MXxYKQ0KZ2xtLnByb2JzWzE6MTBdDQpjb250cmFzdHMoRGlyZWN0aW9uKQ0KDQpnbG0ucHJlZD1yZXAoIkRvd24iLDEyNTApICMgY3JlYXRlIGEgcmVwZWF0IHZlY3RvciAiRG93biIgdG8gYmUgdXNlZCBsYXRlcg0KZ2xtLnByZWRbZ2xtLnByb2JzID4gLjVdID0gIlVwIiAjIENsYXNzaWZ5IGVpdGhlciBwcm9iIGFzIHVwIG9yIGRvd24gYmFzZWQgb24gdGhyZXNob2xkDQpgYGANCg0KYGBge3IgQ29uZnVzaW9uIE1hdHJpeH0NCnRhYmxlKGdsbS5wcmVkLCBEaXJlY3Rpb24pICMgZGV0ZXJtaW5lIGhvdyBtYW55IHdlcmUgY29ycmVjdGx5IG9yIGluY29ycmVjdGx5IGNsYXNzaWZpZWQNCmBgYA0KDQpgYGB7ciBMaW5lYXIgRGlzY3JpbWluYW50IEFuYWx5c2lzfQ0KbGlicmFyeShNQVNTKQ0KdHJhaW49KFllYXIgPCAyMDA1KQ0KU21hcmtldC4yMDA1PVNtYXJrZXRbIXRyYWluLF0NCmxkYS5maXQ9bGRhKERpcmVjdGlvbn5MYWcxK0xhZzIsZGF0YT1TbWFya2V0LHN1YnNldD10cmFpbikgIyAyIHByZWRpY3RvcnMNCmxkYS5maXQgIyBwcmlvciBwcm9iYWJpbGl0aWVzIGluZGljYXRlIFByKCkgb2YgZWFjaCBgRGlyZWN0aW9uYCBjbGFzc2lmaWNhdGlvbiAoVXAgb3IgRG93bikNCiMgaS5lLiA0OS4yJSBvZiB0aGUgdHJhaW5pbmcgb2JzZXJ2YXRpb25zIGNvcnJlc3BvbmQgdG8gZGF5cyBkdXJpbmcgd2hpY2ggdGhlIG1hcmtldCB3ZW50IGRvd24NCnBsb3QobGRhLmZpdCkNCg0KbGRhLnByZWQ9cHJlZGljdChsZGEuZml0LFNtYXJrZXQuMjAwNSkNCm5hbWVzKGxkYS5wcmVkKSAjIGBjbGFzc2AgaW5kaWNhdGVzIG1vdmVtZW50IG9mIHRoZSBtYXJrZXQgDQojIGBwb3N0ZXJpb3JgIGluZGljYXRlcyB0aGUgcG9zdC4gcHJvYi4gdGhhdCB0aGUgY29ycmVzcG9uZGluZyBvYnNlcnZhdGlvbiBiZWxvbmdzIHRvIHRoZSBLLXRoIGNsYXNzDQojIGB4YCBpcyB0aGUgbGluZWFyIGRpc2NyaW1pbmFudCAgDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogImtpbmV0aWMtcG90ZW50aWFsIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gDQoNCmBgYHtyIExvYWQgeW91ciB3b3Jrc3BhY2V9DQpsaWJyYXJ5KElTTFIpDQphdHRhY2goU21hcmtldCkNCmBgYA0KDQpgYGB7ciBMb29rIGF0IHlvdXIgZGF0YSBzZXR9DQpuYW1lcyhTbWFya2V0KQ0KZGltKFNtYXJrZXQpDQpzdW1tYXJ5KFNtYXJrZXQpICMgb3ZlcnZpZXcNCmNvcihTbWFya2V0WywtOV0pICMgTWFrZSBhIHBhaXJ3aXNlIGNvcnJlbGF0aW9uIG1hdHJpeCBvZiBhbGwgcHJlZGljdG9ycyBpbiB0aGUgZGF0YQ0KYGBgDQoNCmBgYHtyIExvZ2lzdGljIFJlZ3Jlc3Npb24gTW9kZWx9DQojIyMgdXNlZCB0byBwcmVkaWN0IGBEaXJlY3Rpb25gIChxdWFsLikgdXNpbmcgdGhlIHF1YW50LiBwcmVkaWN0b3JzDQpnbG0uZml0PWdsbShEaXJlY3Rpb25+TGFnMStMYWcyK0xhZzMrTGFnNCtMYWc1K1ZvbHVtZSxkYXRhPVNtYXJrZXQsZmFtaWx5PWJpbm9taWFsKSAjIGBnbG1gIGlzIGdlbmVyYWxpemUgbGluZWFyIG1vZGVscw0KIyBmYW1pbHk9Ymlub21pYWwgdGVsbHMgdGhlIGZ1bmN0aW9uIHRvIGFwcGx5IGxvZ2lzdGljIHJlZ3Jlc3Npb24NCg0Kc3VtbWFyeShnbG0uZml0KQ0KIyBBcHBseSB0aGUgcHJlZGljdCgpIGZ1bmN0aW9uDQojIyMgYXBwbHkgcHJlZGljdCgpIGZ1bmN0aW9uIHRvIGdldCBwcm9iLiBvZiB0aGUgcmVzcG9uc2UgKFgpDQpnbG0ucHJvYnM9cHJlZGljdChnbG0uZml0LHR5cGU9InJlc3BvbnNlIikjIEdlbmVyYWw6ZGVmYXVsdCBQKFk9MXxYKQ0KZ2xtLnByb2JzWzE6MTBdDQpjb250cmFzdHMoRGlyZWN0aW9uKQ0KDQpnbG0ucHJlZD1yZXAoIkRvd24iLDEyNTApICMgY3JlYXRlIGEgcmVwZWF0IHZlY3RvciAiRG93biIgdG8gYmUgdXNlZCBsYXRlcg0KZ2xtLnByZWRbZ2xtLnByb2JzID4gLjVdID0gIlVwIiAjIENsYXNzaWZ5IGVpdGhlciBwcm9iIGFzIHVwIG9yIGRvd24gYmFzZWQgb24gdGhyZXNob2xkDQoNCiMge3IgQ29uZnVzaW9uIE1hdHJpeH0NCnRhYmxlKGdsbS5wcmVkLCBEaXJlY3Rpb24pICMgZGV0ZXJtaW5lIGhvdyBtYW55IHdlcmUgY29ycmVjdGx5IG9yIGluY29ycmVjdGx5IGNsYXNzaWZpZWQNCmBgYA0KDQpgYGB7ciBMREF9DQpsaWJyYXJ5KE1BU1MpDQp0cmFpbj0oWWVhciA8IDIwMDUpDQpTbWFya2V0LjIwMDU9U21hcmtldFshdHJhaW4sXQ0KbGRhLmZpdD1sZGEoRGlyZWN0aW9ufkxhZzErTGFnMixkYXRhPVNtYXJrZXQsc3Vic2V0PXRyYWluKSAjIDIgcHJlZGljdG9ycw0KbGRhLmZpdCAjIHByaW9yIHByb2JhYmlsaXRpZXMgaW5kaWNhdGUgUHIoKSBvZiBlYWNoIGBEaXJlY3Rpb25gIGNsYXNzaWZpY2F0aW9uIChVcCBvciBEb3duKQ0KIyBpLmUuIDQ5LjIlIG9mIHRoZSB0cmFpbmluZyBvYnNlcnZhdGlvbnMgY29ycmVzcG9uZCB0byBkYXlzIGR1cmluZyB3aGljaCB0aGUgbWFya2V0IHdlbnQgZG93bg0KcGxvdChsZGEuZml0KQ0KDQpsZGEucHJlZD1wcmVkaWN0KGxkYS5maXQsU21hcmtldC4yMDA1KQ0KbmFtZXMobGRhLnByZWQpICMgYGNsYXNzYCBpbmRpY2F0ZXMgbW92ZW1lbnQgb2YgdGhlIG1hcmtldCANCiMgYHBvc3RlcmlvcmAgaW5kaWNhdGVzIHRoZSBwb3N0LiBwcm9iLiB0aGF0IHRoZSBjb3JyZXNwb25kaW5nIG9ic2VydmF0aW9uIGJlbG9uZ3MgdG8gdGhlIEstdGggY2xhc3MNCiMgYHhgIGlzIHRoZSBsaW5lYXIgZGlzY3JpbWluYW50ICANCmBgYA0KDQoNCmBgYHtyIFFEQX0NCg0KcWRhLmZpdD1xZGEoRGlyZWN0aW9ufkxhZzErTGFnMixkYXRhPVNtYXJrZXQsc3Vic2V0PXRyYWluKQ0KcWRhLmZpdA0KcWRhLmNsYXNzPXByZWRpY3QocWRhLmZpdCxTbWFya2V0LjIwMDUpJGNsYXNzDQpEaXJlY3Rpb24uMjAwNT1EaXJlY3Rpb25bIXRyYWluXQ0KdGFibGUocWRhLmNsYXNzLERpcmVjdGlvbi4yMDA1KQ0KbWVhbihxZGEuY2xhc3M9PURpcmVjdGlvbi4yMDA1KQ0KYGBgDQoNCmBgYHtyIEtOTn0NCmxpYnJhcnkoY2xhc3MpDQp0cmFpbi5YPWNiaW5kKExhZzEsTGFnMilbdHJhaW4sXSAjIGNvbGxlY3QgeW91ciB0cmFpbiBkYXRhDQp0ZXN0Llg9Y2JpbmQoTGFnMSxMYWcyKVshdHJhaW4sXSAjIGNvbGxlY3QgeW91ciB0ZXN0IGRhdGENCnRyYWluLkRpcmVjdGlvbj1EaXJlY3Rpb25bdHJhaW5dICMgbGFiZWwgeW91dCBkYXRhDQoNCnNldC5zZWVkKDEpICMgaW5mbGV4DQprbm4ucHJlZD1rbm4odHJhaW4uWCx0ZXN0LlgsdHJhaW4uRGlyZWN0aW9uLGs9MSkgIyBQcmVkaWN0IHRoZSBtYXJrZXRzIG1vdmVtbnQgDQp0YWJsZShrbm4ucHJlZCxEaXJlY3Rpb24uMjAwNSkNCg0KIyMjIE1vZGlmeSBrLXZhbCBmb3IgaW1wcm92Lg0KYGBgDQoNCg==</div>
 
 
 

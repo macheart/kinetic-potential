@@ -25,9 +25,7 @@ glm.fit=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomi
 # family=binomial tells the function to apply logistic regression
 
 summary(glm.fit)
-```
-
-```{r Apply the predict() function}
+# Apply the predict() function
 ### apply predict() function to get prob. of the response (X)
 glm.probs=predict(glm.fit,type="response")# General:default P(Y=1|X)
 glm.probs[1:10]
@@ -35,13 +33,12 @@ contrasts(Direction)
 
 glm.pred=rep("Down",1250) # create a repeat vector "Down" to be used later
 glm.pred[glm.probs > .5] = "Up" # Classify either prob as up or down based on threshold
-```
 
-```{r Confusion Matrix}
+# {r Confusion Matrix}
 table(glm.pred, Direction) # determine how many were correctly or incorrectly classified
 ```
 
-```{r Linear Discriminant Analysis}
+```{r LDA}
 library(MASS)
 train=(Year < 2005)
 Smarket.2005=Smarket[!train,]
@@ -54,5 +51,29 @@ lda.pred=predict(lda.fit,Smarket.2005)
 names(lda.pred) # `class` indicates movement of the market 
 # `posterior` indicates the post. prob. that the corresponding observation belongs to the K-th class
 # `x` is the linear discriminant  
+```
+
+
+```{r QDA}
+
+qda.fit=qda(Direction~Lag1+Lag2,data=Smarket,subset=train)
+qda.fit
+qda.class=predict(qda.fit,Smarket.2005)$class
+Direction.2005=Direction[!train]
+table(qda.class,Direction.2005)
+mean(qda.class==Direction.2005)
+```
+
+```{r KNN}
+library(class)
+train.X=cbind(Lag1,Lag2)[train,] # collect your train data
+test.X=cbind(Lag1,Lag2)[!train,] # collect your test data
+train.Direction=Direction[train] # label yout data
+
+set.seed(1) # inflex
+knn.pred=knn(train.X,test.X,train.Direction,k=1) # Predict the markets movemnt 
+table(knn.pred,Direction.2005)
+
+### Modify k-val for improv.
 ```
 
