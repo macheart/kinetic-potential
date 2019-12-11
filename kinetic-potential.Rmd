@@ -41,3 +41,18 @@ glm.pred[glm.probs > .5] = "Up" # Classify either prob as up or down based on th
 table(glm.pred, Direction) # determine how many were correctly or incorrectly classified
 ```
 
+```{r Linear Discriminant Analysis}
+library(MASS)
+train=(Year < 2005)
+Smarket.2005=Smarket[!train,]
+lda.fit=lda(Direction~Lag1+Lag2,data=Smarket,subset=train) # 2 predictors
+lda.fit # prior probabilities indicate Pr() of each `Direction` classification (Up or Down)
+# i.e. 49.2% of the training observations correspond to days during which the market went down
+plot(lda.fit)
+
+lda.pred=predict(lda.fit,Smarket.2005)
+names(lda.pred) # `class` indicates movement of the market 
+# `posterior` indicates the post. prob. that the corresponding observation belongs to the K-th class
+# `x` is the linear discriminant  
+```
+
